@@ -19,11 +19,54 @@ recursively, and collatzGoto is implemented with the goto statement.
 #include <assert.h> /* assert */
 
 
-int collatzGoto(long unsigned int n) {}
+int collatzGoto(long unsigned int n) {
+	if (n = 1) {
+		return StepCount;
+	}
+	Collatz:
+	if (n%2 == 1) {
+		n = n * 3 + 1;
+	}
+	else {
+		n /= 2;
+	}
+	StepCount ++;
+	if (n != 1) {
+		goto Collatz;
+	}
+	else {
+		return StepCount;
+	}
+}
 
-int collatzWhile(long unsigned int n) {}
+int collatzWhile(long unsigned int n) {
+	int StepCount = 0;
+	while (n != 1) {
+		if (n%2 == 1) {
+			n = n * 3 + 1;
+		}
+		else {
+			n /= 2;
+		}
+		StepCount += 1;
+	}
+		return StepCount;
+}
 
-int collatzRecursive(long unsigned int n) {}
+int collatzRecursive(long unsigned int n) {
+	if (n == 1) {
+		return StepCount;
+	}
+	else {
+		StepCount ++;
+		if (n%2 == 1) {
+			return collatzRecursive(n * 3 + 1);
+		}
+		else {
+			return collatzRecursive(n/2);
+		}
+	}
+}
 
 
 int main () {
